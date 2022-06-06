@@ -10,39 +10,124 @@
 <div id="map" style="width:500px;height:350px;"></div>
 
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=686fb8e1d013ab9cd70720ab4622dbe0&libraries=services"></script>
+<script>
 
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=686fb8e1d013ab9cd70720ab4622dbe0&libraries=services"></script>
-    <script>
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    const url = "https://api.odcloud.kr/api/15055981/v1/uddi:6d218756-7258-42b6-9ab6-d3f07effeb0d?page=1&perPage=240&serviceKey=VfxwJOiRK4Lubg%2BzpSfUrSZpPCdgWPxRzvzRQyBH76dJsrXQ8xmYY1xae3ObsrVrmsWNO7twRmauyRcM0yqY%2Fg%3D%3D";
+      fetch(url)
+      .then((res) => res.json())
+      .then((myJson) => {
+        document.getElementById("data").innerText = JSON.stringify(myJson, null, 1);
+	//	console.log(Object.keys(myJson));
+		var obj_key = Object.keys(myJson);
+		var obj_value = myJson['data'];
+	//	console.log(Object.keys(obj_value[0]));
+	//	console.log(obj_value[0].메뉴); // 횟집
+	//	console.log(Object.values(obj_value[0]));
+		
+		var count_h = 0, count_j = 0, count_c = 0, count_m = 0, count_f = 0, count_g = 0;
+		var h_name = []; //한식 가격명
+		var h_location = []; // 한식 소재지
+		var j_name = []; // 일식 가격명
+		var j_location = []; // 일식 소재지
+		var c_name = [];
+		var c_location = [];
+		var m_name = [];
+		var m_location = [];
+		var f_name = [];
+		var f_location = [];
+		var g_name = [];
+		var g_location = [];
+
+		for (var i = 0; i < obj_value.length; i++)
+		{
+			if (obj_value[i].메뉴 == "한식") {
+				h_name[count_h] = obj_value[i].업소명;
+				h_location[count_h] = obj_value[i].소재지;
+				count_h++;
+			}
+			else if (obj_value[i].메뉴 == "일식") {
+				j_name[count_j] = obj_value[i].업소명;
+				j_location[count_j] = obj_value[i].소재지;
+				count_j++;
+			}
+			else if (obj_value[i].메뉴 == "중국식") {
+				c_name[count_c] = obj_value[i].업소명;
+				c_location[count_c] = obj_value[i].소재지;
+				count_c++;
+			}
+			else if (obj_value[i].메뉴 == "식육(숯불구이)") {
+				m_name[count_m] = obj_value[i].업소명;
+				m_location[count_m] = obj_value[i].소재지;
+				count_m++;
+			}
+			else if (obj_value[i].메뉴 == "횟집") {
+				f_name[count_f] = obj_value[i].업소명;
+				f_location[count_f] = obj_value[i].소재지;
+				count_f++;
+			}
+			else {
+				g_name[count_g] = obj_value[i].업소명;
+				g_location[count_g] = obj_value[i].소재지;
+				count_g++;
+			}
+		}
+		
+		for (var i = 0; i < h_name.length; i++)
+		{
+			console.log(h_name[i]);
+			console.log(h_location[i]);
+		}
+		for (var i = 0; i < j_name.length; i++)
+		{
+			console.log(j_name[i]);
+			console.log(j_location[i]);
+		}
+		for (var i = 0; i < c_name.length; i++)
+		{
+			console.log(c_name[i]);
+			console.log(c_location[i]);
+		}
+		for (var i = 0; i < m_name.length; i++)
+		{
+			console.log(m_name[i]);
+			console.log(m_location[i]);
+		}
+		for (var i = 0; i < f_name.length; i++)
+		{
+			console.log(f_name[i]);
+			console.log(f_location[i]);
+		}
+		for (var i = 0; i < g_name.length; i++)
+		{
+			console.log(g_name[i]);
+			console.log(g_location[i]);
+		}
+      });
+
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };  
 
-// 지도를 생성합니다    
-var map = new daum.maps.Map(mapContainer, mapOption); 
+    // 지도를 생성합니다    
+    var map = new daum.maps.Map(mapContainer, mapOption); 
 
 
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new daum.maps.services.Geocoder();
+    // 주소-좌표 변환 객체를 생성합니다
+    var geocoder = new daum.maps.services.Geocoder();
 
-var listData = [
-    {
-        groupAddress: '제주특별자치도 제주시 첨단로 242', 
-    },
-    {
-        groupAddress: '제주특별자치도 제주시 첨단로 241', 
-    }
-];
     
-            for (var i=0; i < listData.length ; i++) {
-// 주소로 좌표를 검색합니다
-geocoder.addressSearch(listData[i].groupAddress, function(result, status) {
+    
+    for (var i=0; i < h_name.length ; i++) {
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch(h_location[i], function(result, status) {
 
-    // 정상적으로 검색이 완료됐으면 
-     if (status === daum.maps.services.Status.OK) {
+        // 정상적으로 검색이 완료됐으면 
+         if (status === daum.maps.services.Status.OK) {
 
-        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+            var coords = new daum.maps.LatLng(result[0].y, result[0].x);
 
         // 결과값으로 받은 위치를 마커로 표시합니다
         var marker = new daum.maps.Marker({
@@ -52,7 +137,7 @@ geocoder.addressSearch(listData[i].groupAddress, function(result, status) {
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new daum.maps.InfoWindow({
-            content: result[0].y + "," + result[0].x
+            content: h_name[i]
         });
         infowindow.open(map, marker);
 
