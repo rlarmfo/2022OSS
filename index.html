@@ -100,7 +100,7 @@ for (var i=0; i < listData.length ; i++) {
         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
         // 배열에 넣기
-        coffeePositions.push(coords);
+        coffeePositions.push(new kakao.maps.LatLng(result[0].y, result[0].x));
         console.log(coords);
         
     } 
