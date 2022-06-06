@@ -13,6 +13,7 @@
 .category .ico_coffee {background-position:-10px 0;}  
 .category .ico_store {background-position:-10px -36px;}   
 .category .ico_carpark {background-position:-10px -72px;} 
+.category .ico_carpark {background-position:-10px -108px;}
 </style>
 </head>
 <body>
@@ -110,7 +111,6 @@ createCarparkMarkers(); // 주차장 마커를 생성하고 주차장 마커 배
 createKoreaMarkers();
 
 changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
-
 
 // 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
 function createMarkerImage(src, size, options) {
@@ -227,7 +227,7 @@ function createKoreaMarkers() {
 }
 
 // 한식 마커들의 지도 표시 여부를 설정하는 함수입니다
-function setCarparkMarkers(map) {        
+function setKoeanMarkers(map) {        
     for (var i = 0; i < KoreaMarkers.length; i++) {  
         KoreaMarkers[i].setMap(map);
     }        
@@ -255,6 +255,7 @@ function changeMarker(type){
         setCoffeeMarkers(map);
         setStoreMarkers(null);
         setCarparkMarkers(null);
+        setKoreanMarkers(null);
         
     } else if (type === 'store') { // 편의점 카테고리가 클릭됐을 때
     
@@ -267,6 +268,7 @@ function changeMarker(type){
         setCoffeeMarkers(null);
         setStoreMarkers(map);
         setCarparkMarkers(null);
+        setKoreanMarkers(null);
         
     } else if (type === 'carpark') { // 주차장 카테고리가 클릭됐을 때
      
@@ -279,6 +281,7 @@ function changeMarker(type){
         setCoffeeMarkers(null);
         setStoreMarkers(null);
         setCarparkMarkers(map);  
+        setKoreanMarkers(null);
     } 
     else if (type === 'korean') { // 한식 카테고리가 클릭됐을 때
      
@@ -290,7 +293,8 @@ function changeMarker(type){
         // 주차장 마커들만 지도에 표시하도록 설정합니다
         setCoffeeMarkers(null);
         setStoreMarkers(null);
-        setCarparkMarkers(map);  
+        setCarparkMarkers(null);
+        setKoreanMarkers(map);
     } 
 } 
 </script>
