@@ -39,7 +39,7 @@
 </div>
 
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=686fb8e1d013ab9cd70720ab4622dbe0"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=686fb8e1d013ab9cd70720ab4622dbe0&libraries=services"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
@@ -48,6 +48,8 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     }; 
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+var geocoder = new daum.maps.services.Geocoder();
 
 // 커피숍 마커가 표시될 좌표 배열입니다
 var coffeePositions = [               
@@ -93,10 +95,12 @@ for (var i=0; i < listData.length ; i++) {
 geocoder.addressSearch(listData[i].groupAddress, function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
-     if (status === daum.maps.services.Status.OK) {
+     if (status === kakao.maps.services.Status.OK) {
+        
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
         // 배열에 넣기
-        coffeePositions.push(new kakao.maps.LatLng(result[0].y, result[0].x));
+        coffeePositions.push(coords);
     } 
 })
 };    
