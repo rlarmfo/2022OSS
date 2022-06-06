@@ -46,7 +46,7 @@ var listDataB = [
 ];
     
 function showEvent1() {
-    listData = listDataA;
+    var listData = listDataA;
             for (var i=0; i < listData.length ; i++) {
 // 주소로 좌표를 검색합니다
 geocoder.addressSearch(listData[i].groupAddress, function(result, status) {
@@ -74,8 +74,9 @@ geocoder.addressSearch(listData[i].groupAddress, function(result, status) {
 })
 };   
 
+
 function showEvent2() {
-    listData = listDataB;
+    var listData = listDataB;
             for (var i=0; i < listData.length ; i++) {
 // 주소로 좌표를 검색합니다
 geocoder.addressSearch(listData[i].groupAddress, function(result, status) {
