@@ -22,9 +22,6 @@ var map = new daum.maps.Map(mapContainer, mapOption);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new daum.maps.services.Geocoder();
 
-var coffeePositions = [               
-];
-
 var listData = [
     {
         groupAddress: '제주특별자치도 제주시 첨단로 242', 
@@ -44,10 +41,9 @@ geocoder.addressSearch(listData[i].groupAddress, function(result, status) {
         var coords = new daum.maps.LatLng(result[0].y, result[0].x);
 
         // 결과값으로 받은 위치를 마커로 표시합니다
-        coffeePositions.push(coords);
         var marker = new daum.maps.Marker({
             map: map,
-            position: coffeePositions[i]
+            position: coords
         });
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
