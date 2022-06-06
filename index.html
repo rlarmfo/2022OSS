@@ -95,15 +95,19 @@ for (var i=0; i < listData.length ; i++) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === daum.maps.services.Status.OK) {
-        
+        console.log(result[0].y);
+        console.log(result[0].x);
         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
         // 배열에 넣기
         coffeePositions.push(coords);
         console.log(coords);
+        
     } 
 })
 }
+
+console.log(coffeePositions[0]);
 
 
 var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  
