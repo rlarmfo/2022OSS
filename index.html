@@ -24,39 +24,33 @@
         <ul>
             <li id="coffeeMenu" onclick="changeMarker('coffee')">
                 <span class="ico_comm ico_coffee"></span>
-                커피숍
+                한식
             </li>
             <li id="storeMenu" onclick="changeMarker('store')">
                 <span class="ico_comm ico_store"></span>
-                편의점
+                일식
             </li>
             <li id="carparkMenu" onclick="changeMarker('carpark')">
                 <span class="ico_comm ico_carpark"></span>
-                주차장
+                중식
             </li>
         </ul>
     </div>
 </div>
 
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=686fb8e1d013ab9cd70720ab4622dbe0"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
-        center: new kakao.maps.LatLng(37.498004414546934, 127.02770621963765), // 지도의 중심좌표 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표 
         level: 3 // 지도의 확대 레벨 
     }; 
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 // 커피숍 마커가 표시될 좌표 배열입니다
-var coffeePositions = [ 
-    new kakao.maps.LatLng(37.499590490909185, 127.0263723554437),
-    new kakao.maps.LatLng(37.499427948430814, 127.02794423197847),
-    new kakao.maps.LatLng(37.498553760499505, 127.02882598822454),
-    new kakao.maps.LatLng(37.497625593121384, 127.02935713582038),
-    new kakao.maps.LatLng(37.49646391248451, 127.02675574250912),
-    new kakao.maps.LatLng(37.49629291770947, 127.02587362608637),
-    new kakao.maps.LatLng(37.49754540521486, 127.02546694890695)                
+var coffeePositions = [               
 ];
 
 // 편의점 마커가 표시될 좌표 배열입니다
@@ -79,9 +73,36 @@ var carparkPositions = [
     new kakao.maps.LatLng(37.49872543597439, 127.02676785815386),
     new kakao.maps.LatLng(37.49813096097184, 127.02591949495914),
     new kakao.maps.LatLng(37.497680616783086, 127.02518427952202)                       
-];    
+]; 
 
-var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+
+var listData = [
+    {
+        groupAddress: '제주특별자치도 제주시 신대로10길 53',
+    },
+    {
+        groupAddress: '제주특별자치도 제주시 신대로 144', 
+    }
+];
+
+for (var i=0; i < listData.length ; i++) {
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch(listData[i].groupAddress, function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === daum.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+        // 배열에 넣기
+        coffeePositions.push(coords);
+    } 
+})
+};    
+
+
+var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  
+// 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+
     coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
     storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
     carparkMarkers = []; // 주차장 마커 객체를 가지고 있을 배열입니다
