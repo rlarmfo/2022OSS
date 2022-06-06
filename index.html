@@ -24,15 +24,15 @@
         <ul>
             <li id="coffeeMenu" onclick="changeMarker('coffee')">
                 <span class="ico_comm ico_coffee"></span>
-                한식
+                커피숍
             </li>
             <li id="storeMenu" onclick="changeMarker('store')">
                 <span class="ico_comm ico_store"></span>
-                일식
+                편의점
             </li>
             <li id="carparkMenu" onclick="changeMarker('carpark')">
                 <span class="ico_comm ico_carpark"></span>
-                중식
+                주차장
             </li>
         </ul>
     </div>
@@ -92,9 +92,8 @@ geocoder.addressSearch(listData[i].groupAddress, function(result, status) {
     // 정상적으로 검색이 완료됐으면 
      if (status === daum.maps.services.Status.OK) {
 
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
         // 배열에 넣기
-        coffeePositions.push(coords);
+        coffeePositions.push(new kakao.maps.LatLng(result[0].y, result[0].x));
     } 
 })
 };    
