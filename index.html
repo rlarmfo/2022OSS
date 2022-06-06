@@ -127,7 +127,7 @@
 	// 한식
     for (var i=0; i < h_name.length ; i++) {
 		var imageSize = new kakao.maps.Size(24, 35); 
-		 var markerImage = new kakao.maps.MarkerImage(K_imageSrc, imageSize); 
+		 var markerImage1 = new kakao.maps.MarkerImage(K_imageSrc, imageSize); 
 
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(h_location[i], function(result, status) {
@@ -141,7 +141,7 @@
         var marker = new daum.maps.Marker({
             map: map,
             position: coords,
-			image : markerImage
+			image : markerImage1
         });
 
 
@@ -153,7 +153,7 @@
 	for (var i=0; i < j_name.length ; i++) {
 		
 		var imageSize = new kakao.maps.Size(24, 35); 
-		var markerImage = new kakao.maps.MarkerImage(J_imageSrc, imageSize); 
+		var markerImage2 = new kakao.maps.MarkerImage(J_imageSrc, imageSize); 
 
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(j_location[i], function(result, status) {
@@ -167,7 +167,7 @@
         var marker = new daum.maps.Marker({
             map: map,
             position: coords,
-			image : markerImage
+			image : markerImage2
         });
 
 
@@ -179,7 +179,7 @@
 	// 중식
 	for (var i=0; i < c_name.length ; i++) {
 		var imageSize = new kakao.maps.Size(24, 35); 
-		var markerImage = new kakao.maps.MarkerImage(C_imageSrc, imageSize); 
+		var markerImage3 = new kakao.maps.MarkerImage(C_imageSrc, imageSize); 
 
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(c_location[i], function(result, status) {
@@ -193,7 +193,7 @@
         var marker = new daum.maps.Marker({
             map: map,
             position: coords,
-			image : markerImage
+			image : markerImage3
         });
 
 
@@ -205,7 +205,7 @@
 	// 고기
 	for (var i=0; i < m_name.length ; i++) {
 		var imageSize = new kakao.maps.Size(24, 35); 
-		var markerImage = new kakao.maps.MarkerImage(M_imageSrc, imageSize); 
+		var markerImage4 = new kakao.maps.MarkerImage(M_imageSrc, imageSize); 
 
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(m_location[i], function(result, status) {
@@ -219,7 +219,7 @@
         var marker = new daum.maps.Marker({
             map: map,
             position: coords,
-			image : markerImage
+			image : markerImage4
         });
 
 
@@ -230,7 +230,7 @@
 	// 횟집
 	for (var i=0; i < f_name.length ; i++) {
 		var imageSize = new kakao.maps.Size(24, 35); 
-		var markerImage = new kakao.maps.MarkerImage(F_imageSrc, imageSize); 
+		var markerImage5 = new kakao.maps.MarkerImage(F_imageSrc, imageSize); 
 
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(f_location[i], function(result, status) {
@@ -244,7 +244,7 @@
         var marker = new daum.maps.Marker({
             map: map,
             position: coords,
-			image : markerImage
+			image : markerImage5
         });
 
 
@@ -256,7 +256,7 @@
 	//기타
 	for (var i=0; i < g_name.length ; i++) {
 		var imageSize = new kakao.maps.Size(24, 35); 
-		var markerImage = new kakao.maps.MarkerImage(G_imageSrc, imageSize); 
+		var markerImage6 = new kakao.maps.MarkerImage(G_imageSrc, imageSize); 
 
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(g_location[i], function(result, status) {
@@ -270,7 +270,7 @@
         var marker = new daum.maps.Marker({
             map: map,
             position: coords,
-			image : markerImage
+			image : markerImage6
         });
 
 
