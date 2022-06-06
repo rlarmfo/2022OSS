@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div id="map" style="width:500px;height:350px;"></div>
+<div id="map" style="width:1000px;height:1000px;"></div>
 
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=686fb8e1d013ab9cd70720ab4622dbe0&libraries=services"></script>
@@ -73,36 +73,6 @@
 			}
 		}
 		
-		for (var i = 0; i < h_name.length; i++)
-		{
-			console.log(h_name[i]);
-			console.log(h_location[i]);
-		}
-		for (var i = 0; i < j_name.length; i++)
-		{
-			console.log(j_name[i]);
-			console.log(j_location[i]);
-		}
-		for (var i = 0; i < c_name.length; i++)
-		{
-			console.log(c_name[i]);
-			console.log(c_location[i]);
-		}
-		for (var i = 0; i < m_name.length; i++)
-		{
-			console.log(m_name[i]);
-			console.log(m_location[i]);
-		}
-		for (var i = 0; i < f_name.length; i++)
-		{
-			console.log(f_name[i]);
-			console.log(f_location[i]);
-		}
-		for (var i = 0; i < g_name.length; i++)
-		{
-			console.log(g_name[i]);
-			console.log(g_location[i]);
-		}
 
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -145,8 +115,6 @@
         });
 
 
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
     } 
 })};
 	// 일식
@@ -171,8 +139,6 @@
         });
 
 
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
     } 
 })};
 	
@@ -197,8 +163,6 @@
         });
 
 
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
     } 
 })};
 	
@@ -222,9 +186,6 @@
 			image : markerImage4
         });
 
-
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
     } 
 })};
 	// 횟집
@@ -248,8 +209,6 @@
         });
 
 
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
     } 
 })};
 
